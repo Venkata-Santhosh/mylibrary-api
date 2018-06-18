@@ -94,9 +94,52 @@ public class Author {
   
   Database configurations 
   
-   
-   
-  
-  
+
+## Schema
+
+```  /api/books```
+```json
+  {
+    "books" : [
+        {
+          "id" : "XYZ",
+          "title" : "Book title",
+          "publicationDate" : "7/3/2018",
+          "authors" : [
+            "Santhosh",
+            "Satheesh"
+          ],
+          "publisher" : "publisher name"
+        }
+    ]
+  }
+
+```
+```/api/books/{id}```   
+```json
+        {
+            "id" : "XYZ",
+            "title" : "Book title",
+            "publicationDate" : "7/3/2018",
+            "authors" : [
+              "Santhosh",
+              "Satheesh"
+            ],
+            "publisher" : "publisher name"
+          }
+
+```  
+
+```/api/books/{id}/authors```
+```json
+  {
+    "id" : "XYZ",
+    "authors" : [
+      "Satheesh",
+      "Santhosh"
+    ]
+  }
+```
+
   
 
