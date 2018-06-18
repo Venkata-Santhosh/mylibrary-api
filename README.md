@@ -11,8 +11,79 @@ This project provides api for books
   
   Primary contact/head quarters information of Publisher can be stored in Address table. 
   
+  Book 
   
+  ```java
   
+@Entity
+@Data
+public class Book {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String title;
+
+	private Date publicationDate;
+
+	@ManyToOne
+	@JoinColumn(name = "publisher_id")
+	private Publisher publisher;
+
+
+	@ManyToMany(cascade = {CascadeType.PERSIST})
+	@JoinTable(
+			name="book_author",
+			joinColumns={@JoinColumn(name = "book_id")},
+			inverseJoinColumns = {@JoinColumn(name = "author_id")}
+	)
+	private Set<Author> authors = new HashSet<>();
+}
+
+  
+  ```
+
+  Publisher
+  
+  ```java
+
+@Entity
+@Data
+public class Publisher {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String name;
+
+	@OneToMany(mappedBy = "publisher")
+	private Set<Book> books = new HashSet<>();
+
+}
+```
+
+  Author
+  
+  ```java
+
+@Entity
+@Data
+public class Author {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String name;
+
+	@ManyToMany(mappedBy = "authors")
+	private Set<Book> books = new HashSet<>();
+}
+```  
+
+
 ## Project development
 
 #### Steps
