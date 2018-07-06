@@ -46,19 +46,4 @@ public class BookController {
         return new ResponseEntity<>(bookService.queryForAllBooks(), HttpStatus.OK);
     }
 
-//    private Book addBooks() {
-//        Author author = new Author();
-//        author.setName("santhosh");
-//        Publisher publisher = new Publisher();
-//        publisher.setName("COX");
-//        Set<Author> authorSet = new HashSet<>();
-//        authorSet.add(author);
-//
-//        Book book = new Book();
-//        book.setAuthors(authorSet);
-//        book.setPublisher(publisher);
-//        book.setTitle("java");
-//
-//        return book;
-//    }
 }
