@@ -117,16 +117,16 @@ public class Author {
 ```
 ```/api/books/{id}```   
 ```json
-        {
-            "id" : "XYZ",
-            "title" : "Book title",
-            "publicationDate" : "7/3/2018",
-            "authors" : [
-              "Santhosh",
-              "Satheesh"
-            ],
-            "publisher" : "publisher name"
-          }
+  {
+    "id" : "XYZ",
+    "title" : "Book title",
+    "publicationDate" : "7/3/2018",
+    "authors" : [
+      "Santhosh",
+      "Satheesh"
+      ],
+    "publisher" : "publisher name"
+  }
 
 ```  
 
@@ -140,6 +140,7 @@ public class Author {
     ]
   }
 ```
+
 
   
 ### Local environment setup
