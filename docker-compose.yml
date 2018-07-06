@@ -1,0 +1,21 @@
+version: '3.1' #docker-compose version
+services:
+  mysql:
+    image: mysql
+    ports: ['3306:3306']
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mylibrary
+  web:
+    build: .
+    image: mylibrary-api
+    ports: ["8080:8080"]
+    hostname: mylibrary
+    tty: true
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    environment:
+      - DB_PORT=tcp://mysql:3306

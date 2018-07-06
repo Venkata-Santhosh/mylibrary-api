@@ -142,4 +142,14 @@ public class Author {
 ```
 
   
+### Local environment setup
+    
+    MySQL installation using brew 
+    
+    brew install mysql
+    brew services start mysql
+    brew services stop mysql
+    brew servise restart mysql
+    
+    
 
