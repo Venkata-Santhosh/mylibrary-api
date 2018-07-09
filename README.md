@@ -144,7 +144,9 @@ public class Author {
 
   
 ### Local environment setup
-    
+
+```text
+   
     MySQL installation using brew 
     
     brew install mysql
@@ -152,5 +154,42 @@ public class Author {
     brew services stop mysql
     brew servise restart mysql
     
+   
+```
+  
+    
+## Docker build
+
+```dockerfile
+
+FROM openjdk:8
+ADD target/mylibrary-api.jar mylibrary-api.jar
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=local", "mylibrary-api.jar"]
+```    
+    
+```dockerfile
+version: '3.1' #docker-compose version
+services:
+  mysql:
+    image: mysql:5.5
+    ports: ['3306:3306']
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Java@123
+      - MYSQL_DATABASE=mylibrary
+
+  web:
+    build: .
+    image: mylibrary-api
+    ports: ["8081:8081"]
+    hostname: mylibrary
+    tty: true
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Java@123
+
+
+```
     
 
