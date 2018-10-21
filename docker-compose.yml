@@ -1,0 +1,23 @@
+version: '3.1' #docker-compose version
+services:
+  mysql:
+    image: mysql:5.5
+    ports: ['3306:3306']
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Java@123
+      - MYSQL_DATABASE=mylibrary
+    volumes:
+          - my-datavolume:/var/lib/mysql
+  web:
+    build: .
+    image: mylibrary-api
+    ports: ["8081:8081"]
+    hostname: mylibrary
+    tty: true
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Java@123
+
+volumes:
+  my-datavolume:
